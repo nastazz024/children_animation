@@ -1,0 +1,71 @@
+<!DOCTYPE html">
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 justify-content-center" id="loader">
+                
+                <div class="icon">
+                    <button id="plus">
+                        <input id="file" name="myFile" type="file" onchange="readURL(this);">
+                        <label for="file">
+                            <i class="material-icons">
+                                add
+                            </i>
+                        </label>
+
+                    </button><br>
+                </div>
+
+                <img class="img-fluid" id="source_image" src="#" alt="your image" />
+                <div>
+                        <input type="range" id="start" name="volume"
+                               min="0" max="66" value="66">
+                      </div>
+            </div>
+            <div class="col-md-4" id="draw">
+                <div id="clear"><img src="C:\Users\Zaitsava_A\Desktop\bootstrap\animation\iconfinder_ilustracoes_04-08_1519784.svg" width="50" height="50" alt="image description"></div>
+                <canvas id='canvas'>Ваш браузер устарел!</canvas>
+
+            </div>
+            <div class="col-md-4" id="animation">
+                
+                <div id="btn_animation">
+                        
+                            <i class="material-icons play">
+                        play_arrow
+                        </i></div>  
+                <canvas id="canvas_animation" >Ваш браузер устарел!</canvas>
+
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.min.js'></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
