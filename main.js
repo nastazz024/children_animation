@@ -1,73 +1,51 @@
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#source_image')
-                .attr('src', e.target.result);
-            $('#target_image')
-                .attr('src', e.target.result);
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+"use strict";
 
 window.addEventListener("load", function onWindowLoad() {
-    var width = window.innerWidth / 3;
-    var height = window.innerHeight;
-    console.log(width)
-
-    generatePalette(document.getElementById("palette"));
-
+    // canvas references
     var canvas = document.getElementById("canvas");
-    var canvas_animation = document.getElementById("canvas_animation");
+    var canvasAnimation = document.getElementById("canvas_animation");
     var context = canvas.getContext("2d");
-    var context_animation = canvas.getContext("2d");
+    const canvasMotion = document.getElementById("canvas_animation");
+    const contextMotion = canvasMotion.getContext("2d");
+    var leftCanvas = loader.offsetWidth + canvas.offsetLeft;
+    var topCanvas = canvas.offsetTop;
 
-    canvas.width = width;
-    canvas.height = height;
-    canvas_animation.width = width;
-    canvas_animation.height = height;
-    var leftcanvas;
-    var topcanvas;
+    // initial state
     var arr = [];
+    var isDown = false;
 
-    leftcanvas = loader.offsetWidth + canvas.offsetLeft;
-    topcanvas = canvas.offsetTop;
-    var start = document.elementFromPoint(leftcanvas, topcanvas);
-    // переменные для рисования
+    // canvas config
+    canvas.width = window.innerWidth / 3;
+    canvas.height = window.innerHeight;
+    canvasAnimation.width = window.innerWidth / 3;
+    canvasAnimation.height = window.innerHeight;
     context.lineCap = "round";
     context.lineWidth = 8;
+    const INTERVAL = 80;
 
+    drawPath();
+
+    /* event listeners */
     $("#clear").click(function () {
         arr = [];
         context.clearRect(0, 0, canvas.width, canvas.height);
     });
 
-    var is_down = false;
-
     $("#canvas").mousedown(function () {
-        is_down = true;
-        console.log(is_down);
+        isDown = true;
     });
 
     $("#canvas").mouseup(function () {
-        is_down = false;
-        console.log(is_down);
+        isDown = false;
     });
 
-
-
-    // На любое движение мыши по canvas будет выполнятся эта функция
-
     canvas.onmousemove = function drawIfPressed(e) {
-        if (is_down) {
-            // в "e"  попадает экземпляр MouseEvent
-            var x = e.clientX - leftcanvas;
-            var y = e.clientY - topcanvas;
+        if (isDown) {
+            var x = e.clientX - leftCanvas;
+            var y = e.clientY - topCanvas;
             var dx = e.movementX;
             var dy = e.movementY;
-            arr.push({ x, y });
+            arr.push({x, y});
 
             if (e.buttons > 0) {
                 context.beginPath();
@@ -79,53 +57,53 @@ window.addEventListener("load", function onWindowLoad() {
             }
         }
     };
-    canvas_motion = document.getElementById("canvas_animation");
-    context_motion = canvas_motion.getContext("2d");
-
-
+    
     document.getElementById("start").addEventListener("input", function () {
         document.getElementById("source_image").style.width = this.value + '%';
     });
 
-
     $("#btn_animation").click(function animation_img() {
-
-
         let index = 0;
+
         var interval = setInterval(function () {
             if (index <= arr.length) {
-
                 drawFrame();
-
                 var elem = document.getElementById('source_image');
                 var x = arr[index].x - 60;
                 var y = arr[index].y - 80;
                 elem.style.left = x + 'px';
                 elem.style.top = y + 'px';
-                context_motion.drawImage(document.getElementById("source_image"), x, y, $("#source_image").width(), $("#source_image").height());
+                contextMotion.drawImage(document.getElementById("source_image"), x, y, $("#source_image").width(), $("#source_image").height());
                 index++
-
             }
+
             if (index === arr.length) {
                 clearInterval(interval)
             }
-        }, 80);
-
-
+        }, INTERVAL);
     })
 
-
     function drawFrame() {
-        // Очистить холст
-        context_motion.clearRect(0, 0, canvas.width, canvas.height);
+        contextMotion.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    function generatePalette(palette) {
+    function drawPath() {
         var paletteBlock = document.createElement('div');
         paletteBlock.className = 'button';
         paletteBlock.addEventListener('click', function changeColor(e) {
             context.strokeStyle = e.target.style.backgroundColor;
         });
-
     }
+
 });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#source_image')
+                .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}

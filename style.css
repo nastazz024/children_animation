@@ -1,3 +1,7 @@
+:root{
+    --box-shadow: #ffffff 0 0 20px;
+}
+
 html,body{
     height: 100%;
 }
@@ -18,7 +22,7 @@ html,body{
 }
 
 #plus:hover{
-    box-shadow: #53ea93 0 0 20px;
+    box-shadow: var(--box-shadow);
 }
 
 .material-icons{
@@ -73,21 +77,21 @@ label{
     padding: 1px;
     cursor: pointer;
     border: solid 1px #fff;
-  }
+}
    
-  .button:hover {
+.button:hover {
     border: solid 1px #f00;
-  }
+}
    
-  .button:active {
+.button:active {
     border: solid 1px #ff0;
-  }
+}
    
-  #palette, #canvas {
+#palette, #canvas {
     display: inline-block;
     cursor: default;
     vertical-align: top;
-  }
+}
 
 #canvas_animation{
     display: inline-block;
@@ -95,7 +99,7 @@ label{
     vertical-align: top;
 }
    
-  #clear {
+#clear {
     position: absolute;
     background: #7befb2;
     color: #586960;
@@ -105,13 +109,14 @@ label{
     border-radius: 100px;
     bottom: 50px;
     right: 42%;
-  }
+}
 
 #clear:hover{
-    box-shadow: yellow 0 0 20px;
+    box-shadow: var(--box-shadow);
 }
 
 #btn_animation {
+    position: absolute;
     margin: 20px 0 20px 0;
     width:80px;
     height:80px;
@@ -121,37 +126,34 @@ label{
     border: 5px solid #674172;
     outline: none;
     margin-left: 45%;
-  }
+}
 
-  .icon{
-      font-size: 100px;
-  }
+.icon{
+    font-size: 100px;
+}
 
 #btn_animation:hover{
-    box-shadow: #674172 0 0 20px;
+    box-shadow: var(--box-shadow);
 }
    
 .container {
-     white-space: normal;
-     width: 710px;
-  }
+    white-space: normal;
+    width: 710px;
+}
 
 #motion{
     width: 600px;
     height: 600px;
-  }
+}
 
 #target_image{
     width:50px;
-  }
-
-  canvas#source_image{
-      width: 10px;
-      height: 10px;
-  }
-
-#canvas{
 }
+
+canvas#source_image{
+    width: 10px;
+    height: 10px;
+} 
 
 #source_image{
     display: block;
@@ -172,27 +174,28 @@ label{
     margin: 10px 0 0 10px;
 }
 
-
 input[type=range] {
     -webkit-appearance: none;
     margin: 10px 0;
     width: 100%;
     border-radius: 10px;
-  }
-  input[type=range]:focus {
+}
+
+input[type=range]:focus {
     outline: none;
-  }
-  input[type=range]::-webkit-slider-runnable-track {
+}
+
+input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     height: 12.8px;
     cursor: pointer;
-    animate: 0.2s;
     box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
     background: #7befb2;
     border-radius: 25px;
     border: 0px solid #000101;
-  }
-  input[type=range]::-webkit-slider-thumb {
+}
+
+input[type=range]::-webkit-slider-thumb {
     box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
     border: 0px solid #000000;
     height: 20px;
@@ -202,63 +205,4 @@ input[type=range] {
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -3.6px;
-  }
-  input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #7befb2;
-  }
-  input[type=range]::-moz-range-track {
-    width: 100%;
-    height: 12.8px;
-    cursor: pointer;
-    animate: 0.2s;
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    background: #7befb2;
-    border-radius: 25px;
-    border: 0px solid #000101;
-  }
-  input[type=range]::-moz-range-thumb {
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    border: 0px solid #000000;
-    height: 20px;
-    width: 39px;
-    border-radius: 7px;
-    background: #674172;
-    cursor: pointer;
-  }
-  input[type=range]::-ms-track {
-    width: 100%;
-    height: 12.8px;
-    cursor: pointer;
-    animate: 0.2s;
-    background: transparent;
-    border-color: transparent;
-    border-width: 39px 0;
-    color: transparent;
-  }
-  input[type=range]::-ms-fill-lower {
-    background: #ac51b5;
-    border: 0px solid #000101;
-    border-radius: 50px;
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  }
-  input[type=range]::-ms-fill-upper {
-    background: #ac51b5;
-    border: 0px solid #000101;
-    border-radius: 50px;
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  }
-  input[type=range]::-ms-thumb {
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    border: 0px solid #000000;
-    height: 20px;
-    width: 39px;
-    border-radius: 7px;
-    background: #674172;
-    cursor: pointer;
-  }
-  input[type=range]:focus::-ms-fill-lower {
-    background: #ac51b5;
-  }
-  input[type=range]:focus::-ms-fill-upper {
-    background: #ac51b5;
-  }
+}
