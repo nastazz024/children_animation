@@ -41,10 +41,10 @@ window.addEventListener("load", function onWindowLoad() {
 
     canvas.onmousemove = function drawIfPressed(e) {
         if (isDown) {
-            var x = e.clientX - leftCanvas;
-            var y = e.clientY - topCanvas;
-            var dx = e.movementX;
-            var dy = e.movementY;
+            let x = e.clientX - leftCanvas;
+            let y = e.clientY - topCanvas;
+            const dx = e.movementX;
+            const dy = e.movementY;
             arr.push({x, y});
 
             if (e.buttons > 0) {
@@ -68,9 +68,9 @@ window.addEventListener("load", function onWindowLoad() {
         var interval = setInterval(function () {
             if (index <= arr.length) {
                 drawFrame();
-                var elem = document.getElementById('source_image');
-                var x = arr[index].x - 60;
-                var y = arr[index].y - 80;
+                const elem = document.getElementById('source_image');
+                let x = arr[index].x - 60;
+                let y = arr[index].y - 80;
                 elem.style.left = x + 'px';
                 elem.style.top = y + 'px';
                 contextMotion.drawImage(document.getElementById("source_image"), x, y, $("#source_image").width(), $("#source_image").height());
@@ -88,7 +88,7 @@ window.addEventListener("load", function onWindowLoad() {
     }
 
     function drawPath() {
-        var paletteBlock = document.createElement('div');
+        const paletteBlock = document.createElement('div');
         paletteBlock.className = 'button';
         paletteBlock.addEventListener('click', function changeColor(e) {
             context.strokeStyle = e.target.style.backgroundColor;
@@ -99,7 +99,7 @@ window.addEventListener("load", function onWindowLoad() {
 
 function readURL(input) {
     if (input.files && input.files[0]) {
-        var reader = new FileReader();
+        const reader = new FileReader();
         reader.onload = function (e) {
             $('#source_image')
                 .attr('src', e.target.result);
